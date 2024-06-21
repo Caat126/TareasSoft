@@ -2,6 +2,11 @@
 
 @section('content')
 
+@php
+$adminCount = \App\Models\User::where('role', 'admin')->count();
+$estudianteCount = \App\Models\User::where('role', 'estudiante')->count();
+@endphp
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -23,7 +28,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
@@ -37,6 +42,38 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger shadow">
+                    <div class="inner">
+                        <p>Admins</p>
+                        <h3>{{ $adminCount }}</h3>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success shadow">
+                    <div class="inner">
+                        <p>Estudiantes</p>
+                        <h3>{{ $estudianteCount }}</h3>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-user-graduate"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

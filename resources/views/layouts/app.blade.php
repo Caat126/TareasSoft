@@ -18,6 +18,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
 </head>
 <body class="sidebar-mini layout-fixed" style="height: auto;">
 
@@ -100,7 +102,7 @@
                                 </ul>
                             </li> --}}
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('cursos.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-graduation-cap"></i>
                                     <p>
                                         Curso
@@ -133,7 +135,7 @@
                                 </a>
                             </li> --}}
                             <li class="nav-item">
-                                <a href="/usuarios" class="nav-link">
+                                <a href="{{ route('usuarios.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-users"></i>
                                     <p>
                                         Usarios
@@ -166,5 +168,9 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    @yield('scripts')
+
 </body>
 </html>
