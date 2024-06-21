@@ -20,6 +20,15 @@
     <div class="container">
         <div class="row justify-content-center">
 
+            <div class="row">
+                <div class="col-6">
+
+                </div>
+                <div class="col-6">
+                    <a href="{{ route('usuarios.create') }}" class="btn btn-success mb-3 float-right shadow">Nuevo Usuario</a>
+                </div>
+            </div>
+
             @include('includes.alertas')
 
             <div class="table-responsive">
