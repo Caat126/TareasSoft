@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\AsignacionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/curso/ver/{id}', [CursosController::class, 'show'])->name('cursos.show');
     Route::delete('/curso/eliminar/{id}', [CursosController::class, 'destroy'])->name('cursos.destroy');
     Route::get('/curso/estado/{id}', [CursosController::class, 'estado'])->name('cursos.estado');
+
+    // para asignaciones
+    Route::get('/asignaciones', [AsignacionesController::class, 'index'])->name('asignaciones.index');
+    Route::get('/asignacion/registrar', [AsignacionesController::class, 'create'])->name('asignaciones.create');
+    Route::post('/asignacion/registrar', [AsignacionesController::class, 'store'])->name('asignaciones.store');
+    Route::get('/asignacion/editar/{id}', [AsignacionesController::class, 'edit'])->name('asignaciones.edit');
+    Route::put('/asignacion/editar/{id}', [AsignacionesController::class, 'update'])->name('asignaciones.update');
+    Route::get('/asignacion/ver/{id}', [AsignacionesController::class, 'show'])->name('asignaciones.show');
+    Route::delete('/asignacion/eliminar/{id}', [AsignacionesController::class, 'destroy'])->name('asignaciones.destroy');
+    Route::get('/asignacion/estado/{id}', [AsignacionesController::class, 'estado'])->name('asignaciones.estado');
 
 });
 
