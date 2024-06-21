@@ -58,7 +58,7 @@
         @auth
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-                <a href="index3.html" class="brand-link">
+                <a href="/home" class="brand-link">
                     <img src="{{ asset('logo1.png') }}" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">ACADEMIC SOFT</span>
                 </a>
@@ -70,7 +70,7 @@
                             <img src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}&background=0D8ABC&color=fff" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info text-white">
-                            <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                            <a href="/home" class="d-block">{{ auth()->user()->name }}</a>
                             <small class="d-block">{{ auth()->user()->role }}</small>
                         </div>
                     </div>

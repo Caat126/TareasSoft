@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="/home">Inicio</a></li>
                         <li class="breadcrumb-item active">Usuarios</li>
                     </ol>
                 </div>
@@ -50,14 +50,14 @@
                                     <small class="text text-muted d-block">{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans(now()) }}</small>
                                 </td>
                                 <td>
-                                    <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-primary btn-sm">
+                                    <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-primary">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
                                     <form action="{{ route('usuarios.destroy', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </form>

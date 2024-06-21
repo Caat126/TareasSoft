@@ -77,7 +77,7 @@ class CursosController extends Controller
     public function edit($id)
     {
         $curso = Cursos::find($id);
-        return view('cursos.edit', compact('cursos'));
+        return view('cursos.edit', compact('curso'));
     }
 
     /**
