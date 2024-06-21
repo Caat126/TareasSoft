@@ -68,6 +68,13 @@
                                     <a href="{{ url('/asignacion/estado/' . $item->id) }}" class="btn btn-success">
                                         <i class="fa fa-check"></i>
                                     </a>
+                                    <form action="{{ route('asignaciones.destroy', $item->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
                                 @endif
                             </td>
                         </tr>
