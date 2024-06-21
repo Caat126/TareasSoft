@@ -20,6 +20,10 @@
     <div class="container">
         <div class="row justify-content-center">
 
+            <div class="text-end mb-3">
+                <a href="{{ route('usuarios.create') }}" class="btn btn-success">Registrar</a>
+            </div>
+
             @include('includes.alertas')
 
             <div class="table-responsive">

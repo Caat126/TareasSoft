@@ -37,6 +37,8 @@ class UsuariosController extends Controller
         $usuario = new User();
         $usuario->name = $request->name;
         $usuario->email = $request->email;
+        $usuario->password = bcrypt($request->password);
+        $usuario->role = $request->role;
         if ($usuario->save()) {
             return redirect('/usuarios')->with('success', 'Usuario creado con éxito');
         } else {
@@ -76,6 +78,8 @@ class UsuariosController extends Controller
 
         $usuario->name = $request->name;
         $usuario->email = $request->email;
+        $usuario->password = bcrypt($request->password);
+        $usuario->role = $request->role;
         if ($usuario->save()) {
             return redirect('/usuarios')->with('success', 'Usuario actualizado con éxito');
         } else {

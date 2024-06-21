@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                    <li class="breadcrumb-item active">Usuario</li>
+                    <li class="breadcrumb-item active">Usuarios</li>
                 </ol>
             </div>
         </div>
@@ -45,6 +45,20 @@
                                 <label for="email">Correo</label>
                                 <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ $usuario->email }}">
                                 @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role">Rol</label>
+                                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
+                                    <option value="">{{ $usuario->role }}</option>
+                                    <option value="Estudiante" {{ $usuario->role == 'Estudiante' ? 'selected' : '' }}>Estudiante</option>
+                                    <option value="Admin" {{ $usuario->role == 'Admin' ? 'selected' : '' }}>Administrador</option>
+                                </select>
+                                @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
