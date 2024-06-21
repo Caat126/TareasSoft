@@ -20,15 +20,6 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="row">
-                <div class="col-6">
-
-                </div>
-                <div class="col-6">
-                    <a href="{{ route('usuarios.create') }}" class="btn btn-success mb-3 float-right shadow">Nuevo Usuario</a>
-                </div>
-            </div>
-
             @include('includes.alertas')
 
             <div class="table-responsive">
@@ -59,9 +50,13 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
 
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </a>
+                                    <form action="{{ route('usuarios.destroy', $item->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
