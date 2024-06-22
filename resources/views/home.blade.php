@@ -2,11 +2,6 @@
 
 @section('content')
 
-@php
-$adminCount = \App\Models\User::where('role', 'admin')->count();
-$estudianteCount = \App\Models\User::where('role', 'estudiante')->count();
-@endphp
-
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -15,7 +10,7 @@ $estudianteCount = \App\Models\User::where('role', 'estudiante')->count();
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/home">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                     {{-- <li class="breadcrumb-item active">Starter Page</li> --}}
                 </ol>
             </div>
@@ -28,7 +23,7 @@ $estudianteCount = \App\Models\User::where('role', 'estudiante')->count();
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card shadow">
+                <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
@@ -42,38 +37,6 @@ $estudianteCount = \App\Models\User::where('role', 'estudiante')->count();
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="content">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-danger shadow">
-                    <div class="inner">
-                        <p>Admins</p>
-                        <h3>{{ $adminCount }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-                <div class="small-box bg-success shadow">
-                    <div class="inner">
-                        <p>Estudiantes</p>
-                        <h3>{{ $estudianteCount }}</h3>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-user-graduate"></i>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>

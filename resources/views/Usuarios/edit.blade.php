@@ -51,20 +51,6 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label for="role">Rol</label>
-                                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
-                                    <option value="">{{ $usuario->role }}</option>
-                                    <option value="Estudiante" {{ $usuario->role == 'Estudiante' ? 'selected' : '' }}>Estudiante</option>
-                                    <option value="Admin" {{ $usuario->role == 'Admin' ? 'selected' : '' }}>Administrador</option>
-                                </select>
-                                @error('role')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary mt-4">Actualizar</button>
                                 <a href="{{ url('/usuarios') }}" class="btn btn-danger mt-4 ml-3">Cancelar</a>

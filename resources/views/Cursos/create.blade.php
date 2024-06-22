@@ -55,7 +55,7 @@
 
                             <div class="form-group">
                                 <label for="price">Precio</label>
-                                <input type="number" name="price" class="form-control" placeholder="Ingrese el price" value="{{ old('price') }}" step="0.01">
+                                <input type="number" name="price" class="form-control" placeholder="Ingrese el precio" value="{{ old('price') }}" step="0.01">
                                 @error('price')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -79,7 +79,7 @@
     <script>
         $(document).ready(function() {
             $('#contenido').summernote({
-                placeholder: 'Hello stand alone ui',
+                placeholder: 'Escribe la descripcion del curso',
                 tabsize: 2,
                 height: 120,
                 toolbar: [

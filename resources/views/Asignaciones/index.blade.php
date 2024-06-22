@@ -33,6 +33,7 @@
                         <th>ID</th>
                         <th>Usuario</th>
                         <th>Curso</th>
+                        <th>Nombre</th>
                         <th>Fecha de inicio</th>
                         <th>Fecha de finalización</th>
                         <th>Importe</th>
@@ -46,9 +47,10 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->usuario->name }}</td>
                             <td>{{ $item->curso->name }}</td>
-                            <td>{{ $item->fecha_inicio }}</td>
-                            <td>{{ $item->fecha_finalizacion }}</td>
-                            <td>{{ $item->importe }}</td>
+                            <td>{{ $item->nombre }}</td>
+                            <td>{{\Carbon\Carbon::parse($item->fecha_inicio)->format('Y-m-d')}}</td>
+                            <td>{{\Carbon\Carbon::parse($item->fecha_fin)->format('Y-m-d')}}</td>
+                            <td>{{ $item->importe }} Bs</td>
                             <td>
                                 @if ($item->estado == true)
                                     <span class="badge badge-success">Activo</span>

@@ -23,8 +23,8 @@ class AsignacionesController extends Controller
      */
     public function create()
     {
-        $usuarios = User::all();  // Cambiar a plural para coincidir con el nombre en la vista
-        $cursos = Cursos::where('status', true)->get();  // Cambiar a plural para coincidir con el nombre en la vista
+        $usuarios = User::all();
+        $cursos = Cursos::where('status', true)->get();
         return view('asignaciones.create', compact('cursos', 'usuarios'));
     }
 
@@ -73,8 +73,8 @@ class AsignacionesController extends Controller
     public function edit($id)
     {
         $asig = Asignaciones::find($id);
-        $usuarios = User::all();  // Asegúrate de pasar los usuarios
-        $cursos = Cursos::where('status', true)->get();  // Asegúrate de pasar los cursos
+        $usuarios = User::all();
+        $cursos = Cursos::where('status', true)->get();
         return view('asignaciones.edit', compact('asig', 'usuarios', 'cursos'));
     }
 
@@ -111,7 +111,7 @@ class AsignacionesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)  // Cambiar el parámetro a $id
+    public function destroy($id)
     {
         $asig = Asignaciones::find($id);
         if($asig->delete()){

@@ -33,7 +33,6 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Correo</th>
-                            <th>Rol</th>
                             <th>Fecha de registro</th>
                             <th>Acciones</th>
                         </tr>
@@ -44,7 +43,6 @@
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>{{ $item->role }}</td>
                                 <td>
                                     {{ $item->created_at }}
                                     <small class="text text-muted d-block">{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans(now()) }}</small>

@@ -58,17 +58,6 @@
                             <input type="password" name="password_confirmation" class="form-control">
                         </div>
 
-                        <div class="form-group">
-                            <label for="role">Rol</label>
-                            <select name="role" id="role" class="form-control">
-                                <option value="Estudiante">Estudiante</option>
-                                <option value="Admin">Administrador</option>
-                            </select>
-                            @error('role')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-
                         <div class="text-center">
                             <button type="submit" class="btn btn-success">Registrar</button> |
                             <a href="{{ url('/usuarios') }}" class="btn btn-danger">Cancelar</a>
