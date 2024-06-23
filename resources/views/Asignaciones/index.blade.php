@@ -42,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($asig as $item)
+                    @foreach ($asigs as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->usuario->name }}</td>

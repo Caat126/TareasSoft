@@ -14,8 +14,8 @@ class AsignacionesController extends Controller
      */
     public function index()
     {
-        $asig = Asignaciones::with('usuario', 'curso')->orderBy('id', 'desc')->paginate(5);
-        return view('asignaciones.index', compact('asig'));
+        $asigs = Asignaciones::with('usuario', 'curso')->orderBy('id', 'desc')->paginate(5);
+        return view('asignaciones.index', compact('asigs'));
     }
 
     /**

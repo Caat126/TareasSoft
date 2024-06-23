@@ -25,15 +25,6 @@
                 <div class="card-body">
 
                     @include('includes.alertas')
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
 
                     <form action="{{ route('asignaciones.update', $asig->id) }}" method="POST" enctype="multipart/form-data">
                         @method('PUT')

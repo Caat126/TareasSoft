@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\TareasController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\AsignacionesController;
 
@@ -54,6 +55,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/asignacion/ver/{id}', [AsignacionesController::class, 'show'])->name('asignaciones.show');
     Route::delete('/asignacion/eliminar/{id}', [AsignacionesController::class, 'destroy'])->name('asignaciones.destroy');
     Route::get('/asignacion/estado/{id}', [AsignacionesController::class, 'estado'])->name('asignaciones.estado');
+
+    // para tareas
+    Route::get('/tareas', [TareasController::class, 'index'])->name('tareas.index');
+    Route::get('/tarea/registrar', [TareasController::class, 'create'])->name('tareas.create');
+    Route::post('/tarea/registrar', [TareasController::class, 'store'])->name('tareas.store');
+    Route::get('/tarea/editar/{id}', [TareasController::class, 'edit'])->name('tareas.edit');
+    Route::put('/tarea/editar/{id}', [TareasController::class, 'update'])->name('tareas.update');
+    Route::get('/tarea/ver/{id}', [TareasController::class, 'show'])->name('tareas.show');
+    Route::delete('/tarea/eliminar/{id}', [TareasController::class, 'destroy'])->name('tareas.destroy');
+    Route::get('/tarea/estado/{id}', [TareasController::class, 'estado'])->name('tareas.estado');
 
 });
 

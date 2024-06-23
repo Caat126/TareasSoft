@@ -20,7 +20,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-6">
+        <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-body">
 
@@ -28,30 +28,36 @@
 
                     <form action="{{ route('asignaciones.store') }}" method="POST">
                         @csrf
-                        <div class="form-group">
-                            <label for="usuario_id">Usuario</label>
-                            <select name="usuario_id" id="usuario_id" class="form-control">
-                                <option value="">-- Seleccionar --</option>
-                                @foreach ($usuarios as $usuario)
-                                    <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('usuario_id')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
 
-                        <div class="form-group">
-                            <label for="curso_id">Curso</label>
-                            <select name="curso_id" id="curso_id" class="form-control">
-                                <option value="">-- Seleccionar --</option>
-                                @foreach ($cursos as $cur)
-                                    <option value="{{ $cur->id }}">{{ $cur->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('curso_id')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="usuario_id">Usuario</label>
+                                    <select name="usuario_id" id="usuario_id" class="form-control">
+                                        <option value="">-- Seleccionar --</option>
+                                        @foreach ($usuarios as $usuario)
+                                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('usuario_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="curso_id">Curso</label>
+                                    <select name="curso_id" id="curso_id" class="form-control">
+                                        <option value="">-- Seleccionar --</option>
+                                        @foreach ($cursos as $cur)
+                                            <option value="{{ $cur->id }}">{{ $cur->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('curso_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -62,20 +68,25 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="fecha_inicio">Fecha de inicio</label>
-                            <input type="date" name="fecha_inicio" class="form-control" value="{{ old('fecha_inicio') }}">
-                            @error('fecha_inicio')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fecha_finalizacion">Fecha de finalización</label>
-                            <input type="date" name="fecha_finalizacion" class="form-control" value="{{ old('fecha_finalizacion') }}">
-                            @error('fecha_finalizacion')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fecha_inicio">Fecha de inicio</label>
+                                    <input type="date" name="fecha_inicio" class="form-control" value="{{ old('fecha_inicio') }}">
+                                    @error('fecha_inicio')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fecha_finalizacion">Fecha de finalización</label>
+                                    <input type="date" name="fecha_finalizacion" class="form-control" value="{{ old('fecha_finalizacion') }}">
+                                    @error('fecha_finalizacion')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
