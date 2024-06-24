@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Tareas;
 use App\Models\Asignaciones;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class TareasController extends Controller
      */
     public function index()
     {
-        $tareas = Tareas::with('asignacion')->orderBy('id', 'desc')->paginate(5);
+        $tareas = Tareas::with('asignacion', 'usuario')->orderBy('id', 'desc')->paginate(5);
         return view('tareas.index', compact('tareas'));
     }
 
@@ -22,8 +23,9 @@ class TareasController extends Controller
      */
     public function create()
     {
+        $usuarios = User::all();
         $asigs = Asignaciones::all();
-        return view('tareas.create', compact('asigs'));
+        return view('tareas.create', compact('asigs', 'usuarios'));
     }
 
     /**
@@ -33,6 +35,7 @@ class TareasController extends Controller
     {
         $this->validate($request, [
             'asig_id' => 'required|exists:asignaciones,id',
+            'usuario_id' => 'required|exists:users,id',
             'descripcion' => 'required',
             'entrega' => 'required',
             'nota' => 'required'
@@ -40,6 +43,7 @@ class TareasController extends Controller
 
         $tarea = new Tareas();
         $tarea->asig_id = $request->asig_id;
+        $tarea->usuario_id = $request->usuario_id;
         $tarea->descripcion = $request->descripcion;
         $tarea->entrega = $request->entrega;
         $tarea->nota = $request->nota;
@@ -55,7 +59,8 @@ class TareasController extends Controller
      */
     public function show($id)
     {
-        //
+        $tarea = Tareas::with('asignacion', 'usuario')->find($id);
+        return view('tareas.show', compact('tarea'));
     }
 
     /**
@@ -65,7 +70,8 @@ class TareasController extends Controller
     {
         $tarea = Tareas::find($id);
         $asigs = Asignaciones::all();
-        return view('tareas.edit', compact('tarea', 'asigs'));
+        $usuarios = User::all();
+        return view('tareas.edit', compact('tarea', 'asigs', 'usuarios'));
     }
 
     /**
@@ -75,6 +81,7 @@ class TareasController extends Controller
     {
         $this->validate($request, [
             'asig_id' => 'required|exists:asignaciones,id',
+            'usuario_id' => 'required|exists:users,id',
             'descripcion' => 'required',
             'entrega' => 'required',
             'nota' => 'required'
@@ -82,6 +89,7 @@ class TareasController extends Controller
 
         $tarea = Tareas::find($id);
         $tarea->asig_id = $request->asig_id;
+        $tarea->usuario_id = $request->usuario_id;
         $tarea->descripcion = $request->descripcion;
         $tarea->entrega = $request->entrega;
         $tarea->nota = $request->nota;

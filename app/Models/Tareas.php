@@ -14,6 +14,7 @@ class Tareas extends Model
 
     protected $fillable = [
         'asig_id',
+        'usuario_id',
         'descripcion',
         'entrega',
         'nota'
@@ -23,5 +24,11 @@ class Tareas extends Model
     public function asignacion()
     {
         return $this->belongsTo(Asignaciones::class, 'asig_id');
+    }
+
+    // Relacion con usuarios
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 }

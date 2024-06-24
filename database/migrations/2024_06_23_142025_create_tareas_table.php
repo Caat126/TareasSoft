@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tareas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('asig_id')->constrained('asignaciones');
+            $table->foreignId('usuario_id')->constrained('users');
             $table->string('descripcion');
             $table->string('entrega');
             $table->string('nota');

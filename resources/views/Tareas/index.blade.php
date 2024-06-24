@@ -20,9 +20,11 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        @if (auth()->user()->role == 'Admin')
         <div class="text-end">
-            <a href="{{ route('tareas.create') }}" class="btn btn-primary mb-3">Nueva Tarea</a>
+            <a href="{{ route('tareas.create') }}" class="btn btn-success mb-3">Nueva Tarea</a>
         </div>
+        @endif
 
         @include('includes.alertas')
 
@@ -32,6 +34,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Asignacion</th>
+                        <th>Estudiante</th>
                         <th>Descripción</th>
                         <th>Entrega</th>
                         <th>Nota</th>
@@ -43,10 +46,15 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->asignacion->nombre }}</td>
+                            <td>{{ $item->usuario->name }}</td>
                             <td>{!! $item->descripcion !!}</td>
                             <td>{{\Carbon\Carbon::parse($item->entrega)->format('Y-m-d')}}</td>
                             <td>{{ $item->nota }}</td>
                             <td>
+                                <a href="{{ route('tareas.show', $item->id) }}" class="btn btn-dark">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                @if (auth()->user()->role == 'Admin')
                                 <a href="{{ route('tareas.edit', $item->id) }}" class="btn btn-primary">
                                     <i class="fas fa-edit"></i>
                                 </a>
@@ -57,6 +65,7 @@
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

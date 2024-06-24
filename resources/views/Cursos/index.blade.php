@@ -20,9 +20,11 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        @if (auth()->user()->role == 'Admin')
         <div class="text-end">
-            <a href="{{ route('cursos.create') }}" class="btn btn-success mb-3">Registrar</a>
+            <a href="{{ route('cursos.create') }}" class="btn btn-success mb-3">Nuevo Curso</a>
         </div>
+        @endif
 
         @include('includes.alertas')
 
@@ -31,9 +33,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Imagen</th>
                         <th>Nombre</th>
-                        <th>Descripción</th>
                         <th>Precio</th>
                         <th>Estado</th>
                         <th>Acciones</th>
@@ -43,9 +43,7 @@
                     @foreach ($cursos as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td><img src="{{ $item->getImagenUrl() }}" alt="" height="40px"></td>
                         <td>{{ $item->name }}</td>
-                        <td>{!! $item->description !!}</td>
                         <td>{{ $item->price }} Bs</td>
                         <td>
                             @if ($item->status == true)
@@ -55,17 +53,27 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('cursos.edit', $item->id) }}" class="btn btn-primary ">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            @if ($item->status == true)
-                                <a href="{{ url('/curso/estado/' . $item->id) }}" class="btn btn-danger ">
-                                <i class="fa fa-ban"></i>
+                            <a href="{{ route('cursos.show', $item->id) }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                            @if (auth()->user()->role == 'Admin')
+                                <a href="{{ route('cursos.edit', $item->id) }}" class="btn btn-primary ">
+                                    <i class="fas fa-edit"></i>
                                 </a>
-                            @else
-                                <a href="{{ url('/curso/estado/' . $item->id) }}" class="btn btn-success">
-                                <i class="fa fa-check"></i>
-                                </a>
+                                @if ($item->status == true)
+                                    <a href="{{ url('/curso/estado/' . $item->id) }}" class="btn btn-danger ">
+                                    <i class="fa fa-ban"></i>
+                                    </a>
+                                @else
+                                    <a href="{{ url('/curso/estado/' . $item->id) }}" class="btn btn-success">
+                                    <i class="fa fa-check"></i>
+                                    </a>
+                                    <form action="{{ route('cursos.destroy', $item->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este curso?')">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </button>
+                                    </form>
+                                @endif
                             @endif
                         </td>
                     </tr>
@@ -78,6 +86,5 @@
 
     </div>
 </div>
-
 
 @endsection

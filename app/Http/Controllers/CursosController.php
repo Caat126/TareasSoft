@@ -54,7 +54,7 @@ class CursosController extends Controller
         $curso->description = $request->description;
         $curso->imagen = $nombreImagen;
         $curso->price = $request->price;
-        $curso->status = ($request->status == 'on') ? true : false;
+        $curso->status = true;
         if ($curso->save()) {
             return redirect('/cursos')->with('success', 'Curso creado con éxito');
         } else {
@@ -68,7 +68,7 @@ class CursosController extends Controller
     public function show($id)
     {
         $curso = Cursos::find($id);
-        return view('cursos.show', compact('cursos'));
+        return view('cursos.show', compact('curso'));
     }
 
     /**
@@ -115,7 +115,7 @@ class CursosController extends Controller
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->price = $request->price;
-        $curso->status = ($request->status == 'on') ? true : false;
+        $curso->status = true;
         if ($curso->save()) {
             return redirect('/cursos')->with('success', 'Curso actualizado con exito');
         } else {

@@ -21,7 +21,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="text-end">
-            <a href="{{ route('asignaciones.create') }}" class="btn btn-primary mb-3">Nueva Asignación</a>
+            @if (auth()->user()->role == 'Admin')
+            <a href="{{ route('asignaciones.create') }}" class="btn btn-success mb-3">Nueva Asignación</a>
+            @else
+            <a href="{{ route('asignaciones.create') }}" class="btn btn-success mb-3">Asignarme a curso</a>
+            @endif
         </div>
 
         @include('includes.alertas')
@@ -59,24 +63,29 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('asignaciones.edit', $item->id) }}" class="btn btn-primary">
-                                    <i class="fas fa-edit"></i>
+                                <a href="{{ route('asignaciones.show', $item->id) }}" class="btn btn-dark">
+                                    <i class="fas fa-eye"></i>
                                 </a>
-                                @if ($item->estado == true)
-                                    <a href="{{ url('/asignacion/estado/' . $item->id) }}" class="btn btn-danger">
-                                        <i class="fa fa-ban"></i>
+                                @if (auth()->user()->role == 'Admin')
+                                    <a href="{{ route('asignaciones.edit', $item->id) }}" class="btn btn-primary">
+                                        <i class="fas fa-edit"></i>
                                     </a>
-                                @else
-                                    <a href="{{ url('/asignacion/estado/' . $item->id) }}" class="btn btn-success">
-                                        <i class="fa fa-check"></i>
-                                    </a>
-                                    <form action="{{ route('asignaciones.destroy', $item->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </form>
+                                    @if ($item->estado == true)
+                                        <a href="{{ url('/asignacion/estado/' . $item->id) }}" class="btn btn-danger">
+                                            <i class="fa fa-ban"></i>
+                                        </a>
+                                    @else
+                                        <a href="{{ url('/asignacion/estado/' . $item->id) }}" class="btn btn-success">
+                                            <i class="fa fa-check"></i>
+                                        </a>
+                                        <form action="{{ route('asignaciones.destroy', $item->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                 @endif
                             </td>
                         </tr>

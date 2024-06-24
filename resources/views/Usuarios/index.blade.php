@@ -21,7 +21,7 @@
         <div class="row justify-content-center">
 
             <div class="text-end mb-3">
-                <a href="{{ route('usuarios.create') }}" class="btn btn-success">Registrar</a>
+                <a href="{{ route('usuarios.create') }}" class="btn btn-success">Nuevo Usuario</a>
             </div>
 
             @include('includes.alertas')
@@ -32,6 +32,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Rol</th>
                             <th>Correo</th>
                             <th>Fecha de registro</th>
                             <th>Acciones</th>
@@ -42,12 +43,14 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
+                                <td>{{ $item->role }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>
                                     {{ $item->created_at }}
                                     <small class="text text-muted d-block">{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans(now()) }}</small>
                                 </td>
                                 <td>
+                                    <a href="{{ route('usuarios.show', $item->id) }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                                     <a href="{{ route('usuarios.edit', $item->id) }}" class="btn btn-primary">
                                         <i class="fas fa-edit"></i>
                                     </a>

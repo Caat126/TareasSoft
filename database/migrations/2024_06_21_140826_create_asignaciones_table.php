@@ -19,7 +19,7 @@ return new class extends Migration
             $table->dateTime('fecha_inicio')->nulleable();
             $table->dateTime('fecha_finalizacion')->nulleable();
             $table->string('importe');
-            $table->boolean('estado')->default(false);
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

@@ -30,6 +30,7 @@
                         @csrf
 
                         <div class="row">
+                            @if (auth()->user()->role == 'Admin')
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="usuario_id">Usuario</label>
@@ -44,6 +45,18 @@
                                     @enderror
                                 </div>
                             </div>
+                            @else
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="usuario_id">Usuario</label>
+                                    <input type="hidden" name="usuario_id" value="{{ auth()->user()->id }}">
+                                    <select name="usuario_id" id="usuario_id" class="form-control" disabled>
+                                        <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            @endif
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="curso_id">Curso</label>

@@ -33,10 +33,24 @@
                         <div class="form-group">
                             <label for="asig_id">Asignacion</label>
                             <select name="asig_id" id="asig_id" class="form-control">
-                                <option value="">-- Seleccionar --</option>
+                                <option value="{{ $tarea->asig_id }}">{{ $tarea->asignacion->nombre }}</option>
                                 @foreach ($asigs as $asign)
                                     <option value="{{ $asign->id }}">{{ $asign->nombre }}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usuario_id">Estudiante</label>
+                            <select name="usuario_id" id="usuario_id" class="form-control">
+                                <option value="{{ $tarea->usuario_id }}">{{ $tarea->usuario->name }}</option>
+                                @if (auth()->user()->role == 'Admin')
+                                    @foreach ($usuarios as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                @else
+                                    <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
+                                @endif
                             </select>
                         </div>
 
@@ -82,6 +96,7 @@
 </div>
 
 @endsection
+
 
 @section('scripts')
     <script>

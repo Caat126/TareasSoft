@@ -32,11 +32,13 @@ class UsuariosController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
+            'role' => 'required',
         ]);
 
         $usuario = new User();
         $usuario->name = $request->name;
         $usuario->email = $request->email;
+        $usuario->role = $request->role;
         $usuario->password = bcrypt($request->password);
         if ($usuario->save()) {
             return redirect('/usuarios')->with('success', 'Usuario creado con éxito');
@@ -71,13 +73,14 @@ class UsuariosController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'nullable|email|unique:users,email,' . $id,
+            'role' => 'required',
         ]);
 
         $usuario = User::find($id);
 
         $usuario->name = $request->name;
         $usuario->email = $request->email;
-        $usuario->password = bcrypt($request->password);
+        $usuario->role = $request->role;
         if ($usuario->save()) {
             return redirect('/usuarios')->with('success', 'Usuario actualizado con éxito');
         } else {

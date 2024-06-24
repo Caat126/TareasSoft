@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -38,6 +37,19 @@
                                 @endforeach
                             </select>
                             @error('asig_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usuario_id">Estudiante</label>
+                            <select name="usuario_id" id="usuario_id" class="form-control">
+                                <option value="">-- Seleccionar --</option>
+                                @foreach ($usuarios as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('usuario_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -83,7 +95,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('scripts')

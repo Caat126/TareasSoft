@@ -50,7 +50,7 @@ class AsignacionesController extends Controller
         $asig->fecha_inicio = $request->fecha_inicio;
         $asig->fecha_finalizacion = $request->fecha_finalizacion;
         $asig->importe = $request->importe;
-        $asig->estado = $request->estado == 'on' ? true : false;
+        $asig->estado = true;
         if ($asig->save()) {
             return redirect('/asignaciones')->with('success', 'Asignación creada con éxito');
         } else {
@@ -100,7 +100,7 @@ class AsignacionesController extends Controller
         $asig->fecha_inicio = $request->fecha_inicio;
         $asig->fecha_finalizacion = $request->fecha_finalizacion;
         $asig->importe = $request->importe;
-        $asig->estado = $request->estado == 'on' ? true : false;
+        $asig->estado = true;
         if ($asig->save()) {
             return redirect('/asignaciones')->with('success', 'Asignación actualizada con éxito');
         } else {
